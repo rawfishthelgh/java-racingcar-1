@@ -1,24 +1,31 @@
+import models.Car;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-public class racingCar {
+public class RacingCar {
     public static void main(String[] args) {
         getCarName();
     }
 
     public static void getCarName() {
-
         Scanner sc = new Scanner(System.in);
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)");
-        String car1 = sc.next();
 
-        System.out.println("1번차: " + car1);
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)"); //pobi,crong,honux
+        String[] carNames = sc.nextLine().split(","); //nextLine : 개행문자를 만나면 종료
+        List<Car> carData = new ArrayList<>(); //ArrayList<> 표현식 : 리스트의 길이가 가변적
+        for (String name : carNames) {
+            carData.add(new Car(name.trim()));
+        }
+
+        System.out.println(carData);
 
 
         Random r = new Random();
 
         int racingNumber = r.nextInt(10);
-        System.out.println(racingNumber);
 
     }
 }
@@ -41,3 +48,4 @@ pobi : -
 crong : -
 honux : -
  */
+
