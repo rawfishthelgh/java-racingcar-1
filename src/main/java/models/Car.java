@@ -1,9 +1,11 @@
 package models;
 
+//자동차 명과 진척도를 담는 클래스
 public class Car {
     private final String name;
     private int progress;
 
+    //constructor
     public Car(String name) {
         this.name = name;
         this.progress = 0;

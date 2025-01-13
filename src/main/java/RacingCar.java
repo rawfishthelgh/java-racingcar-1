@@ -1,16 +1,23 @@
 import models.Car;
+import services.RacingService;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 public class RacingCar {
     public static void main(String[] args) {
-        getCarName();
+        List<Car> cars = getCarName();
+        int roundCount = getRoundCount();
+
+        System.out.println("\n실행결과");
+        RacingService.simulateRace(cars, roundCount);
+
+        List<String> winners = RacingService.findWinner(cars);
+        System.out.println('\n' + "최종 우승자ㅣ "  + String.join(" ", winners));
     }
 
-    public static void getCarName() {
+    public static List<Car> getCarName() {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)"); //pobi,crong,honux
@@ -22,11 +29,15 @@ public class RacingCar {
 
         System.out.println(carData);
 
+        return carData;
+    }
 
-        Random r = new Random();
+    public static int getRoundCount() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println(".시도할 횟수는 몇회인가요?:  ");
+        int roundCount = sc.nextInt();
 
-        int racingNumber = r.nextInt(10);
-
+        return roundCount;
     }
 }
 
